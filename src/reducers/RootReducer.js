@@ -3,7 +3,7 @@ import {routerReducer} from 'react-router-redux';
 
 import * as UserReducer    from './UserReducers';
 
-export const RootReducers = combineReducers({
+export const RootReducer = combineReducers({
   stores: combineReducers({
     userStore: combineReducers(UserReducer)
   }),

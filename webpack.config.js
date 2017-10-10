@@ -46,7 +46,7 @@ module.exports = {
     hot: true,
     inline: true,
     host: '0.0.0.0',
-    port: 4000,
+    port: 7070,
     contentBase: __dirname + '/public/'
   },
 

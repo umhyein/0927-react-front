@@ -1,6 +1,19 @@
 import React from 'react';
+import {bindConnects} from 'libs/connect';
+import {Link} from 'react-router-dom';
 
-export default class Login extends React.Component{
+import UserActions from 'actions/UserActions';
+
+class Login extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {
+      data : {
+        test : ""
+      }
+    }
+  }
 
   render(){
     return(
@@ -8,3 +21,11 @@ export default class Login extends React.Component{
     );
   }
 }
+
+export default bindConnects(
+  [{
+    actionName: 'userActions',
+    action: UserActions,
+    storeName: 'userStore'
+  }]
+)(Login);
