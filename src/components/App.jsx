@@ -16,7 +16,7 @@ export default class App extends React.Component {
     return(
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/main" component={Main} />
+        <Route exact path="/main" component={Main} />
         <Route component={Error} />
       </Switch>
     );

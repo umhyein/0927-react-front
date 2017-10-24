@@ -5,19 +5,21 @@ import history from 'libs/history';
 
 import * as UserActionTypes from 'contants/UserActionTypes';
 
-const signIn = (params) => {
+const fetchUser = (params) => {
   return dispatch => {
-    axios.post('/test')
+    axios.post('/api/test')
       .then((res) => {
         if(res.data.result) {
-          dispatch(createAction(UserActionTypes.SIGNIN_SUCCESS)());
-          test:res.data
+          dispatch(createAction(UserActionTypes.SIGNIN_SUCCESS)({
+            test:res.data
+          }));
         }
       })
       .catch((res) => {
         dispatch(createAction(UserActionTypes.SIGNIN_FAIL)());
+        history.replace('/');
       });
   }
 };
 
-export default {signIn};
+export default {fetchUser};

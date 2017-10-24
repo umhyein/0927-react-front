@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   src : path.join(__dirname, 'src'),
   dist : path.join(__dirname, 'dist')
-}
+};
 
 module.exports = {
 
@@ -48,10 +48,9 @@ module.exports = {
     stats: 'errors-only',
     host: '0.0.0.0',
     port: 7070,
-    contentBase: __dirname + '/public/',
+    contentBase: PATHS.dist,
     historyApiFallback: true,
   },
-
 
   plugins: [
     new webpack.HotModuleReplacementPlugin()

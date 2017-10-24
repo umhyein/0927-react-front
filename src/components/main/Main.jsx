@@ -1,4 +1,5 @@
 import React from 'react';
+import UserActions from 'actions/UserActions'
 
 class Main extends React.Component {
 
@@ -8,7 +9,7 @@ class Main extends React.Component {
 
   render(){
     return (
-      <h1> Main 화면 </h1>
+      <h1> MAin</h1>
     );
   }
 
