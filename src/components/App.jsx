@@ -1,10 +1,11 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 import history from 'libs/history';
 
 import Login from './login/Login';
 import Main from './main/Main';
-import Error from 'components/common/Error';
+import Header from './common/Header';
+import Error from './common/Error';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class App extends React.Component {
     return(
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route exact path="/main" component={Main} />
+        <Route path="/main" component={Main} />
         <Route component={Error} />
       </Switch>
     );
