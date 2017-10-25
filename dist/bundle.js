@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d7c8f0b433daed9db6c4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9cf1901e255a43842b22"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -14735,23 +14735,23 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var fetchUser = function fetchUser(params) {
+var signIn = function signIn(params) {
   return function (dispatch) {
-    _axios2.default.post('/api/test').then(function (res) {
-      if (res.data.result) {
+    _axios2.default.get('/api/test').then(function (res) {
+      if (res) {
         dispatch((0, _reduxActions.createAction)(UserActionTypes.SIGNIN_SUCCESS)({
-          test: res.data
+          auth: res.data
         }));
       }
     }).catch(function (res) {
       dispatch((0, _reduxActions.createAction)(UserActionTypes.SIGNIN_FAIL)());
-      _history2.default.replace('/');
+      console.log('error');
     });
   };
 };
 //import toastr from 'libs/toastr';
 
-exports.default = { fetchUser: fetchUser };
+exports.default = { signIn: signIn };
 
 /***/ }),
 /* 139 */
@@ -31865,14 +31865,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function auth() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { tset: {} };
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
   switch (action.type) {
     case UserActionTypes.SIGNIN_SUCCESS:
-      return (0, _reactAddonsUpdate2.default)(state, { $merge: {
-          test: action.payload.test
-        } });
+      return action.payload.auth;
 
     case UserActionTypes.SIGNIN_FAIL:
       return (0, _reactAddonsUpdate2.default)(state, { $merge: {
@@ -32171,23 +32169,22 @@ var Login = function (_React$Component) {
   function Login(props) {
     _classCallCheck(this, Login);
 
-    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-
-    _this.state = {
-      data: {
-        test: ""
-      }
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
   }
 
   _createClass(Login, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.userActions.signIn();
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'h1',
         null,
-        ' Login'
+        ' ',
+        this.props.userStore.auth
       );
     }
   }]);

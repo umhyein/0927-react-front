@@ -7,17 +7,15 @@ import UserActions from 'actions/UserActions';
 class Login extends React.Component{
   constructor(props){
     super(props);
+  }
 
-    this.state = {
-      data : {
-        test : ""
-      }
-    }
+  componentDidMount() {
+      this.props.userActions.signIn();
   }
 
   render(){
     return(
-      <h1> Login</h1>
+      <h1> {this.props.userStore.auth}</h1>
     );
   }
 }
