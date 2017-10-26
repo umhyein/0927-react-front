@@ -9,6 +9,7 @@ const signIn = (params) => {
   return dispatch => {
     axios.get('/api/test')
       .then((res) => {
+        console.log(res.data);
         if(res) {
           dispatch(createAction(UserActionTypes.SIGNIN_SUCCESS)({
             auth:res.data
