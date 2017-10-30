@@ -3,7 +3,10 @@ import React from 'react';
 class Header extends React.Component{
   render(){
     return (
-      <h1>Header</h1>
+      <header className="mb-1">
+        <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        </nav>
+      </header>
     )
   }
 }

@@ -4,12 +4,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
   src : path.join(__dirname, 'src'),
-  dist : path.join(__dirname, 'dist')
+  dist : path.join(__dirname, 'dist'),
+  style : path.join(__dirname, 'src/css/style.css')
 };
 
 module.exports = {
 
-  entry: path.join(PATHS.src, 'index.jsx'),
+  entry: {
+    index : path.join(PATHS.src, 'index.jsx'),
+    style : PATHS.style
+  },
   resolve: {
     modules: [
       PATHS.src,
@@ -19,7 +23,7 @@ module.exports = {
   },
   output: {
     path: PATHS.dist,
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   resolveLoader: {
     moduleExtensions: ["-loader"]
